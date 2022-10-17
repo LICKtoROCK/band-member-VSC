@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="ok.2nd">
+	<meta name="description" content="日本地図、クリッカブルマップ、スマホ対応">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="./map-japan.css">
+	<style>
+		body {
+			margin: 15px 10px;
+		}
+
+		table#clickable_map {
+			margin: 0 auto;
+		}
+	</style>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script>
+$(function() {
+  wh_change();
+});
+$(window).resize(function() {
+  wh_change();
+});
+
+function wh_change() {
+  sW = window.innerWidth;
+  sH = window.innerHeight;
+  if (sW > sH) { // 横長
+    if (sH < 400) { // 縦が400pxより小さい
+      $('#clickable_map br').css('display', 'none');
+      $('#clickable_map a').css('line-height', '17px');
+	  $('#clickable_map a').css('padding', '1px 0');
+	  $('#hokkaido').css('height', '26px');
+	  $('#hokkaido').css('line-height', '17px');
+	  $('.char3 a').css('line-height', '17px');
+	  $('.char3 a').css('font-size', '14px');
+	  $('.rowspan_2 a').css('line-height', '36px');
+	  $('#clickable_map td').not('#dummy').css('height', '20px'); // .not(セレクタ) 除外
+    }
+    else if (sH < 600) { // 縦が600pxより小さい
+	  $('#clickable_map br').css('display', 'none');
+	  $('#clickable_map a').css('line-height', '30px');
+	  $('#clickable_map a').css('padding', '1px 0');
+	  $('#hokkaido').css('height', '49px');
+	  $('#hokkaido').css('line-height', '30px');
+	  $('.char3 a').css('line-height', '30px');
+	  $('.char3 a').css('font-size', '14px');
+	  $('.rowspan_2 a').css('line-height', '60px');
+	  $('#clickable_map td').not('#dummy').css('height', '24px');
+	  }
+    else {
+	  $('#clickable_map br').css('display', 'none');
+	  $('#clickable_map a').css('line-height', '49px');
+	  $('#clickable_map a').css('padding', '1px 0');
+	  $('#hokkaido').css('height', '49px');
+	  $('#hokkaido').css('line-height', '49px');
+	  $('.char3 a').css('line-height', '49px');
+	  $('.char3 a').css('font-size', '14px');
+	  $('.rowspan_2 a').css('line-height', '99px');
+	  $('#clickable_map td').not('#dummy').css('height', '24px');
+	  }
+  }
+  else { // 縦長 (スマホ)
+  	$('#clickable_map br').css('display', '');
+    $('#clickable_map a').css('line-height', '14px');
+    $('#clickable_map a').css('padding', '5px 0');
+    $('#hokkaido').css('height', '49px');
+    $('#hokkaido').css('line-height', '14px');
+    $('.char3 a').css('line-height', '12px');
+    $('.char3 a').css('font-size', '12px');
+    $('.rowspan_2 a').css('line-height', '30px');
+    $('#clickable_map td').not('#dummy').css('height', '24px');
+  }
+}
+	</script>
+	<title>日本地図：クリッカブルマップ</title>
+</head>
+
+<body>
+	<table id="clickable_map" cellspacing="1">
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td colspan=2 id="hokkaido" class="char3"><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%8C%97%E6%B5%B7%E9%81%93" target="_top" class="hokkaido">北<br>海<br>道</a></td>
+		</tr>
+		<tr>
+			<td id="dummy" colspan=13 style="height:2px; line-height:2px;"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td colspan=2 class="colspan_2"><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E9%9D%92%E6%A3%AE%E7%9C%8C" target="_top" class="touhoku">青<br>森</a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E7%A7%8B%E7%94%B0%E7%9C%8C" target="_top" class="touhoku">秋<br>田</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%B2%A9%E6%89%8B%E7%9C%8C" target="_top" class="touhoku">岩<br>手</a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td rowspan=2 class="rowspan_2"><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E7%9F%B3%E5%B7%9D%E7%9C%8C" target="_top" class="chubu">石<br>川</a></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%B1%B1%E5%BD%A2%E7%9C%8C" target="_top" class="touhoku">山<br>形</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%AE%AE%E5%9F%8E%E7%9C%8C" target="_top" class="touhoku">宮<br>城</a></td>
+		</tr>
+		<tr>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E6%B2%96%E7%B8%84%E7%9C%8C" target="_top" class="kyushu">沖<br>縄</a></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%AF%8C%E5%B1%B1%E7%9C%8C" target="_top" class="chubu">富<br>山</a></td>
+			<td colspan=2 class="colspan_2"><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E6%96%B0%E6%BD%9F%E7%9C%8C" target="_top" class="chubu">新<br>潟</a></td>
+			<td colspan=2 class="colspan_2"><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E7%A6%8F%E5%B3%B6%E7%9C%8C" target="_top" class="touhoku">福<br>島</a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E7%A6%8F%E4%BA%95%E7%9C%8C" target="_top" class="chubu">福<br>井</a></td>
+			<td rowspan=2 class="rowspan_2"><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%B2%90%E9%98%9C%E7%9C%8C" target="_top" class="chubu">岐<br>阜</a></td>
+			<td rowspan=2 class="rowspan_2"><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E9%95%B7%E9%87%8E%E7%9C%8C" target="_top" class="chubu">長<br>野</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E7%BE%A4%E9%A6%AC%E7%9C%8C" target="_top" class="kantou">群<br>馬</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E6%A0%83%E6%9C%A8%E7%9C%8C" target="_top" class="kantou">栃<br>木</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E8%8C%A8%E5%9F%8E%E7%9C%8C" target="_top" class="kantou">茨<br>城</a></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%B3%B6%E6%A0%B9%E7%9C%8C" target="_top" class="chugoku">島<br>根</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E9%B3%A5%E5%8F%96%E7%9C%8C" target="_top" class="chugoku">鳥<br>取</a></td>
+			<td rowspan=2 class="rowspan_2"><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%85%B5%E5%BA%AB%E7%9C%8C" target="_top" class="kinki">兵<br>庫</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E4%BA%AC%E9%83%BD%E5%BA%9C" target="_top" class="kinki">京<br>都</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E6%BB%8B%E8%B3%80%E7%9C%8C" target="_top" class="kinki">滋<br>賀</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%B1%B1%E6%A2%A8%E7%9C%8C" target="_top" class="chubu">山<br>梨</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%9F%BC%E7%8E%89%E7%9C%8C" target="_top" class="kantou">埼<br>玉</a></td>
+			<td rowspan=2 class="rowspan_2"><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%8D%83%E8%91%89%E7%9C%8C" target="_top" class="kantou">千<br>葉</a></td>
+		</tr>
+		<tr>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E4%BD%90%E8%B3%80%E7%9C%8C" target="_top" class="kyushu">佐<br>賀</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E7%A6%8F%E5%B2%A1%E7%9C%8C" target="_top" class="kyushu">福<br>岡</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%B1%B1%E5%8F%A3%E7%9C%8C" target="_top" class="chugoku">山<br>口</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%BA%83%E5%B3%B6%E7%9C%8C" target="_top" class="chugoku">広<br>島</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%B2%A1%E5%B1%B1%E7%9C%8C" target="_top" class="chugoku">岡<br>山</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%A4%A7%E9%98%AA%E5%BA%9C" target="_top" class="kinki">大<br>阪</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%A5%88%E8%89%AF%E7%9C%8C" target="_top" class="kinki">奈<br>良</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E6%84%9B%E7%9F%A5%E7%9C%8C" target="_top" class="chubu">愛<br>知</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E9%9D%99%E5%B2%A1%E7%9C%8C" target="_top" class="chubu">静<br>岡</a></td>
+			<td class="char3"><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C" target="_top" class="kantou">神<br>奈<br>川</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E6%9D%B1%E4%BA%AC%E9%83%BD" target="_top" class="kantou">東<br>京</a></td>
+		</tr>
+		<tr>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E9%95%B7%E5%B4%8E%E7%9C%8C" target="_top" class="kyushu">長<br>崎</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%A4%A7%E5%88%86%E7%9C%8C" target="_top" class="kyushu">大<br>分</a></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td class="char3"><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%92%8C%E6%AD%8C%E5%B1%B1%E7%9C%8C" target="_top" class="kinki">和<br>歌<br>山</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E4%B8%89%E9%87%8D%E7%9C%8C" target="_top" class="chubu">三<br>重</a></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E7%86%8A%E6%9C%AC%E7%9C%8C" target="_top" class="kyushu">熊<br>本</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%AE%AE%E5%B4%8E%E7%9C%8C" target="_top" class="kyushu">宮<br>崎</a></td>
+			<td></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E6%84%9B%E5%AA%9B%E7%9C%8C" target="_top" class="shikoku">愛<br>媛</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E9%A6%99%E5%B7%9D%E7%9C%8C" target="_top" class="shikoku">香<br>川</a></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td colspan=2 class="colspan_2 char3"><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E9%B9%BF%E5%85%90%E5%B3%B6%E7%9C%8C" target="_top" class="kyushu">鹿<br>児<br>島</a></td>
+			<td></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E9%AB%98%E7%9F%A5%E7%9C%8C" target="_top" class="shikoku">高<br>知</a></td>
+			<td><a href="http://127.0.0.1:8000/posts/prefSearch?prefectures=%E5%BE%B3%E5%B3%B6%E7%9C%8C" target="_top" class="shikoku">徳<br>島</a></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	<div style="clear:both;padding:40px 0 0 0;text-align:center;">
+		<a href="https://2ndart.hatenablog.com/entry/2018/07/07/144138" target="_blank" style="color:#888;font-size:small">晴歩雨描：ブログ記事</a>
+	</div>
+</body>
+
+</html>
